@@ -1,53 +1,87 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
-  <head>
-
+<head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link
-
       href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
-
       rel="stylesheet"
-
     />
 
     <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Regression Data</title>
+    <meta name="author" content="Nikhil Surendra Bijlani">
+    <!-- <meta content="Display any CSV file as a searchable, filterable, pretty HTML table"> -->
 
-    <title>Home</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+</head>
 
-  </head>
-
-  <body>
-
+<body>
     <nav>
+        <div class="heading">
+          <h4>Nexus Instances</h4>
+        </div>
+        <ul class="nav-links">
+          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="pages/about.html">UAT</a></li>
+        </ul>
+      </nav>
+  
+      
+    <div class="container-fluid">
+        <main class="row">
+            <div class="col">
+                <h1>Regression Test Data</h1>
+                <p>Below table displays the statistical data </p>
+                <div id="table-container"></div>
+            </div>
+        </main>
+        <footer class="row">
+            <div class="col">
+                <hr>
+                <p class="text-right"><a href="https://github.com/derekeder/csv-to-html-table">CSV to HTML Table</a> by
+                    <a href="http://derekeder.com">Derek
+                        Eder</a></p>
+            </div>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.csv.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="js/csv_to_html_table.js"></script>
 
-      <div class="heading">
+    <script>
+        function format_link(link) {
+            if (link)
+                return "<a href='" + link + "' target='_blank'>" + link + "</a>";
+            else return "";
+        }
 
-        <h4>Nexus Instances</h4>
-
-      </div>
-
-      <ul class="nav-links">
-
-        <li><a class="active" href="index.html">Home</a></li>
-
-        <li><a href="pages/about.html">nexus3-uat</a></li>
-
-        <li><a href="pages/services.html">nexus3</a></li>
-
-        <li><a href="pages/contact.html">nexus301</a></li>
-
-      </ul>
-
-    </nav>
-
-    <div class="body-text"><h1>This is Home Page!</h1></div>
-
-  </body>
+        CsvToHtmlTable.init({
+            csv_path: "data/test.csv",
+            element: "table-container",
+            allow_download: true,
+            csv_options: {
+                separator: ",",
+                delimiter: '"'
+            },
+            datatables_options: {
+                paging: true
+            },
+            custom_formatting: [
+                [4, format_link]
+            ]
+        });
+    </script>
+</body>
 
 </html>
