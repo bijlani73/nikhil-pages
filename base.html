@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Data with Chart.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+<body>
+    <!-- <style>
+        #chart-wrapper {
+          display: inline-block;
+          position: relative;
+          width: 50%;
+        }
+      </style>
+      <div id="chart-wrapper">
+        <canvas id="myChart"></canvas>
+      </div> -->
+    <canvas id="myChart"></canvas>
+
+    <script>
+        // Example CSV data
+        csvData = "base.csv";
+
+        // Parse CSV data using Papa Parse
+        Papa.parse(csvData, {
+            download: true,
+            header: true,
+            complete: function(results) {
+                const labels = results.data.map(row => row.Year);
+                const data = results.data.map(row => row.Revenue);
+
+                // Chart.js configuration
+                const ctx = document.getElementById('myChart').getContext('2d');
+                ctx.canvas.parentNode.style.height = '1000px';
+                ctx.canvas.parentNode.style.width = '1000px';
+                const chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Revenue',
+                            data: data,
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
