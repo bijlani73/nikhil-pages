@@ -1,0 +1,9 @@
+LoadModule qos_module modules/mod_qos.so
+
+<IfModule mod_qos.c>
+  # Define a limit to the number of requests per minute
+  QS_LimitRequestPerSec 60
+
+  # Define the maximum burst size (number of requests allowed to exceed the limit)
+  QS_LimitRequestBurst 10
+</IfModule>
