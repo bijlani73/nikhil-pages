@@ -7,3 +7,7 @@ LoadModule qos_module modules/mod_qos.so
   # Define the maximum burst size (number of requests allowed to exceed the limit)
   QS_LimitRequestBurst 10
 </IfModule>
+
+Install mod_qos: First, ensure that mod_qos is installed and enabled in your Apache HTTP server. You can typically install it using your distribution's package manager or by compiling it from source.
+
+Configure mod_qos: Modify your Apache configuration file (often located at /etc/apache2/apache2.conf or /etc/httpd/httpd.conf) to include configuration directives for mod_qos. Here's an example of what you might add:
