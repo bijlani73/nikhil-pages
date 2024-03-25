@@ -11,3 +11,29 @@ LoadModule qos_module modules/mod_qos.so
 Install mod_qos: First, ensure that mod_qos is installed and enabled in your Apache HTTP server. You can typically install it using your distribution's package manager or by compiling it from source.
 
 Configure mod_qos: Modify your Apache configuration file (often located at /etc/apache2/apache2.conf or /etc/httpd/httpd.conf) to include configuration directives for mod_qos. Here's an example of what you might add:
+
+To use mod_security2.c for rate limiting in Apache HTTPD 2.4, you can set up custom rules to limit the number of requests a user can make to a specific resource within a given timeframe. Here’s an example configuration that limits the number of requests to 10 per minute for a specific location:
+
+<IfModule mod_security2.c>
+    SecRuleEngine On
+    SecAction "phase:1,nolog,pass,initcol:ip=%{REMOTE_ADDR}"
+    <Location "/your_location">
+        # Define a custom variable to track the request count
+        SecAction "phase:5,pass,nolog,setvar:ip.request_counter=+1,expirevar:ip.request_counter=60"
+        
+        # Check if the request count is greater than the limit
+        SecRule IP:REQUEST_COUNTER "@gt 10" "id:'123456',phase:2,deny,status:429,setenv:RATELIMITED"
+        
+        # Set the rate limit header
+        Header always set Retry-After "60" env=RATELIMITED
+    </Location>
+</IfModule>
+
+In this configuration:
+
+SecRuleEngine On activates the rule engine of ModSecurity.
+initcol initializes a collection to store data for the client’s IP address.
+setvar increments the ip.request_counter by 1 for each request.
+expirevar sets the counter to expire after 60 seconds (1 minute).
+SecRule checks if the ip.request_counter is greater than 10, and if so, it denies the request with a 429 status code.
+Header sets the Retry-After header to 60 seconds for clients that have hit the rate limit.
