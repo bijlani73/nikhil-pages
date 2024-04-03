@@ -37,3 +37,41 @@ setvar increments the ip.request_counter by 1 for each request.
 expirevar sets the counter to expire after 60 seconds (1 minute).
 SecRule checks if the ip.request_counter is greater than 10, and if so, it denies the request with a 429 status code.
 Header sets the Retry-After header to 60 seconds for clients that have hit the rate limit.
+
+
+
+
+
+
+Title: Automating Manual Change Order Creation with Jenkins Pipeline
+
+Introduction:
+- Introduce the concept of automating change order creation.
+- Mention the use of Jenkins Pipeline for automation.
+
+Overview of Jenkins Pipeline:
+- Explain what Jenkins Pipeline is and its benefits.
+
+Problem Statement:
+- Describe the drawbacks of manual change order creation.
+
+Solution:
+- Introduce the automation solution using Jenkins Pipeline.
+
+Implementation:
+- Detail the technical implementation with code snippets.
+
+Benefits:
+- Discuss the advantages of automation.
+
+Challenges Faced:
+- Share any challenges encountered and how they were overcome.
+
+Results:
+- Present metrics or data demonstrating the effectiveness of automation.
+
+Conclusion:
+- Summarize key points and emphasize the importance of automation.
+
+Next Steps:
+- Provide resources for further learning and invite reader engagement.
