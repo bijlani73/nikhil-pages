@@ -1,0 +1,34 @@
+Title: Streamlining Change Order Creation and ICE Evidence Updates with Jenkins Pipeline Automation
+
+Introduction:
+- Introduce the manual process of change order creation and ICE evidence updates.
+- Highlight the importance of consistency and compliance.
+- Preview the automation solution with Jenkins Pipeline.
+
+The Manual Process:
+- Describe the challenges and limitations of the previous manual workflow.
+
+Automation Solution:
+- Introduce the automation solution using Jenkins Pipeline.
+- Explain the concept of change order templates and ICE evidence updates.
+
+Implementation Details:
+- Provide technical insights into implementing the automation solution.
+- Share code snippets and configurations.
+
+Benefits of Automation:
+- Discuss the improvements in consistency, compliance, and efficiency.
+- Share positive outcomes observed since automation.
+
+Ensuring Compliance:
+- Explain how automation helps ensure compliance.
+- Discuss features implemented for compliance enforcement.
+
+Future Possibilities:
+- Explore potential enhancements and expansions of the automation solution.
+- Encourage continuous improvement and innovation.
+
+Conclusion:
+- Summarize the transformation achieved through automation.
+- Emphasize the importance of automation for consistency and compliance.
+- Encourage readers to explore automation in their workflows.
